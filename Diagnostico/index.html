@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+   </head>
+   <link rel="stylesheet" href="css/style.css">    
+<body>
+<div class="login-page">
+    <div class="form">
+        <center>
+            <h1>Formulario</h1>
+        </center>
+      <label for="fecha">Fecha:</label>
+            <input type="date" placeholder="Fecha" name="fecha" />
+      <p>   </p>
+      <label for="paciente">Nombre del paciente:</label>
+      <input type="text" placeholder="Nombre del paciente" name="paciente" />
+<p>   </p>
+<label for="edad">Edad:</label>
+<input type="number" placeholder="Edad" name="edad" />
+<label for="fechaNac">Fecha de nacimiento:</label>
+<input type="date" name="fechaNac" />
+<p>   </p>
+
+<label for="Direccion">Direccion:</label>
+<input type="text" placeholder="Direccion" name="Direccion" />
+<p>   </p>
+
+
+<label for="Ocupacion">Ocupación:</label>
+<input type="text" placeholder="Ocupacion" name="Ocupacion" />
+<label for="Telefono">Telefono:</label>
+<input type="text" placeholder="Numero de telefono" name="Telefono" />
+<label for="Celular">Celular:</label>
+<input type="text" placeholder="Numero de celular" name="Celular" />
+<p></p>
+<label for="padre">Nombre del padre:</label>
+<input type="text" placeholder="Nombre del padre" name="padre" />
+<label for="Ocupacion">Ocupación:</label>
+<input type="text" placeholder="Ocupacion" name="Ocupacion" />
+<p></p>
+<p></p>
+<label for="madre">Nombre de la madre:</label>
+<input type="text" placeholder="Nombre de la madre" name="madre" />
+<label for="Ocupacion">Ocupación:</label>
+<input type="text" placeholder="Ocupacion" name="Ocupacion" />
+<p></p>
+<label for="recomendado">Fui recomendado por:</label>
+<input type="text" placeholder="Recomendado por" name="recomendado" />
+<p></p>
+<label for="visita">¿Es la primera visita al dentista?:</label>
+<input id="visita" type="radio" name="visita" value="Si" onclick="marcado=true">Si
+<input id="visita" type="radio" name="visita" value="No" onclick="marcado=true">No
+<p></p>
+<label for="enfermedad">¿Padece actualmente de alguna enfermedad?:</label>
+<input type="text" placeholder="Si" name="enfermedad" />
+<p></p>
+
+<label for="medicamento">¿Está tomando algún medicamento actualmente?:</label>
+<input type="text" placeholder="Si" name="medicamento" />
+<p></p>
+
+<label for="alergico">¿Es alérgico a algún medicamento?:</label>
+<input type="text" placeholder="Si" name="alergico" />
+<p></p>
+
+<label for="boca">¿Respira por la boca?:</label>
+<input type="radio" name="boca" value="Si" onclick="marcado=true">Si
+<input type="radio" name="boca" value="No" onclick="marcado=true">No
+<p></p>
+
+
+<label for="encias">¿Le sangran las encías con facilidad?:</label>
+<input type="radio" name="encias" value="Si" onclick="marcado=true">Si
+<input type="radio" name="encias" value="No" onclick="marcado=true">No
+<p></p>
+
+<label for="dedo">¿Se chupa el dedo?:</label>
+<input type="radio" name="dedo" value="Si" onclick="marcado=true">Si
+<input type="radio" name="dedo" value="No" onclick="marcado=true">No
+<p></p>
+
+
+<label for="uñas">¿Se muerde las uñas?:</label>
+<input type="radio" name="uñas" value="Si" onclick="marcado=true">Si
+<input type="radio" name="uñas" value="No" onclick="marcado=true">No
+<p></p>
+
+<label for="tratamiento">¿Ha estado bajo tratamiento de ortodoncia previamente?:</label>
+<input type="radio" name="tratamiento" value="Si" onclick="marcado=true">Si
+<input type="radio" name="tratamiento" value="No" onclick="marcado=true">No
+<p></p>
+
+
+
+<h3>Odontograma</h3>
+<canvas id="lienzo" width="100" height="100"> </canvas>
+<canvas id="lienzo2" width="100" height="100"> </canvas>
+<canvas id="lienzo3" width="100" height="100"> </canvas>
+
+<script src="js/script.js"></script>
+
+<p></p>
+
+<input type="submit" value="Enviar" />
+    </div>
+</div>
+
+
+    </body>
+    </html>
+
