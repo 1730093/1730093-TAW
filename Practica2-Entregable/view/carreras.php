@@ -18,7 +18,7 @@
 <?php
     $registroCarrera = new MvcController();
     $registroCarrera -> registroCarreraController();
-
+    
     //Verificar que la URL correcta
     if(isset($_GET["action"])){
         if($_GET["action"] == "ok"){

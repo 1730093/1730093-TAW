@@ -13,15 +13,22 @@
 <form method="POST">
     <input type="text" placeholder="Nombre de la materia" name="materiaRegistro" required>
     <input type="text" placeholder="Clave de la materia" name="claveRegistro" required>
-    <input type="text" placeholder="Carrera" name="carRegistro" required>
-    
+    <?php
+    $respuesta = Datos::vistaCarreraModel("carreras");
+        echo ' <select id="mi_select" name="mi_select">
+                <option value="">Seleccionar carrera</option>';
+                    foreach($respuesta as $row => $item){
+                    echo '<option value="'.$item["id"].'">'.$item["nombre"].'</option>';
+                }
+        echo    '</select>';
+    ?>
     <input type="submit" value="Enviar">
 </form>
 
 <?php
-    $registroCarrera = new MvcController();
-    $registroCarrera -> registroCarreraController();
-
+    $registroMateria = new MvcController();
+    $registroMateria -> registroMateriaController();
+    //$registroMateria -> listarCarreraController();
     //Verificar que la URL correcta
     if(isset($_GET["action"])){
         if($_GET["action"] == "ok"){
@@ -32,10 +39,12 @@
 
 
 
-<h1>CARRERAS</h1>
+<h1>MATERIAS</h1>
     <table border="1">
         <thead>
             <tr>
+                <th>Nombre</th>
+                <th>Clave</th>
                 <th>Carrera</th>
                 <th></th>
                 <th></th>
@@ -43,9 +52,9 @@
         </thead>
         <tbody>
             <?php
-                $vistaCarrera = new MvcController();
-                $vistaCarrera -> vistaCarreraController();
-                $vistaCarrera -> borrarCarreraController();
+                $vistaMateria = new MvcController();
+                $vistaMateria -> vistaMateriaController();
+                $vistaMateria -> borrarMateriaController();
             ?>
         </tbody>
     </table>

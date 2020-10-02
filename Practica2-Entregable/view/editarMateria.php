@@ -7,11 +7,12 @@
     }
 
 ?>
-<h1>EDITAR CARRERA</h1>
+<h1>EDITAR MATERIA</h1>
 <form method="POST">
     <?php
-        $editarCarrera = new MvcController();
-        $editarCarrera -> editarCarreraController();
-        $editarCarrera -> actualizarCarreraController();
+        $editarMateria = new MvcController();
+        $editarMateria-> editarMateriaController();
+        $editarMateria-> actualizarMateriaController();
     ?>
+
 </form>
