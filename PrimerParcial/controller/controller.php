@@ -71,7 +71,7 @@
                                     "año"=>$_POST["añoRegistro"]
                                     );
             //Enviamos los parámetros al Modelo para que procese el registro
-            $respuesta = Datos::registroCarreraModel($datosController, "libros");
+            $respuesta = Datos::registroLibroModel($datosController, "libros");
 
             //Recibir la repuesta del modelo para saber que sucedió (success o error) 
             if($respuesta == "success"){
@@ -83,7 +83,7 @@
     }
      public function vistaLibrosController(){
             //Envio al Modelo la variable de control y la tabla a donde se hará la consulta.
-            $respuesta = Datos::vistaCarreraModel("libros");
+            $respuesta = Datos::vistaLibrosModel("libros");
             foreach ($respuesta as $row => $item){
                 echo '<tr>
                     <td>'.$item["nombre"].'</td>
@@ -97,7 +97,7 @@
         }
 
          public function editarLibroController(){
-            //Solicitar el id de la carrera a editar
+            //Solicitar el id del libro a editar
             $datosController = $_GET["id"];
             //Enviamos al modelo el id para hacer la consulta y obtener sus datos
             $respuesta = Datos::editarLibroModel($datosController, "libros");
@@ -132,7 +132,7 @@
                                     "año"=>$_POST["añoEditar"]
                                         );
                 //Enviar el array a el modelo que generara el UPDATE
-                $respuesta = Datos::actualizarCarreraModel($datosController,"libros");
+                $respuesta = Datos::actualizarLibrosModel($datosController,"libros");
                 //Recibimos respuesta del modelo para determinar si se llevo a cabo el UPDATE de manera correcta
                 if($respuesta=="success"){
                     header("location:index.php?action=libros");
@@ -146,7 +146,7 @@
             if(isset($_GET["idBorrarL"])){
                 $datosController = $_GET["idBorrarL"];
                     //Mandar ID  al controlador para que ejecute el DELETE.
-                $respuesta = Datos::borrarCarreraModel($datosController, "libros");
+                $respuesta = Datos::borrarLibrosModel($datosController, "libros");
 
                 //Recibimos la respuesta del modelo de eliminación 
                 if($respuesta == "success"){
