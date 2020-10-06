@@ -1,8 +1,14 @@
-<h1>REGISTRAR</h1>
+<h1>REGISTRAR USUARIO</h1>
 <form method="POST">
+    <label>Usuario</label>
     <input type="text" placeholder="Usuario" name="usuarioRegistro" required>
+    <p></p>
+    <label>Contraseña</label>
     <input type="password" placeholder="Contraseña" name="passwordRegistro" required>
+    <p></p>
+    <label>Email</label>
     <input type="email" placeholder="Email" name="emailRegistro" required>
+    <p></p>
     <input type="submit" value="Enviar">
 </form>
 <?php

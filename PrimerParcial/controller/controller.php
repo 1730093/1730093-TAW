@@ -46,7 +46,7 @@
                 if($respuesta["usuario"] == $_POST["usuarioIngreso"] && $respuesta["contrasena"] == $_POST["passwordIngreso"]){
                     session_start();
                     $_SESSION["validar"] = true;
-                    header("location:index.php?action=usuarios");
+                    header("location:index.php?action=libros");
                 }else{
                     header("location:index.php?action=fallo");
                 }
@@ -64,11 +64,11 @@
         //Almaceno en un array los valores de la vista de registro
         if(isset($_POST["nombreRegistro"])){       
             $datosController = array("isbn"=>$_POST["isbnRegistro"],
-                                    "nombrelibro"=>$_POST["nombreRegistro"],
+                                    "nombre"=>$_POST["nombreRegistro"],
                                     "autor"=>$_POST["autorRegistro"],
                                     "editorial"=>$_POST["editorialRegistro"],
                                     "edicion"=>$_POST["edicionRegistro"],
-                                    "año"=>$_POST["añoRegistro"]
+                                    "year"=>$_POST["yearRegistro"]
                                     );
             //Enviamos los parámetros al Modelo para que procese el registro
             $respuesta = Datos::registroLibroModel($datosController, "libros");
@@ -86,9 +86,15 @@
             $respuesta = Datos::vistaLibrosModel("libros");
             foreach ($respuesta as $row => $item){
                 echo '<tr>
+                    <td>'.$item["isbn"].'</td>
                     <td>'.$item["nombre"].'</td>
+                    <td>'.$item["autor"].'</td>
+                    <td>'.$item["editorial"].'</td>
+                    <td>'.$item["edicion"].'</td>
+                    <td>'.$item["year"].'</td>
+                    
                     <!--COLUMNA PARA EDITAR -->
-                    <td><a href="index.php?action=editarLibro&id='.$item["id"].'"><button>EDITAR</button></a></td>
+                    <td><a href="index.php?action=editarlibro&idEditarL='.$item["id"].'"><button>EDITAR</button></a></td>
                     <!--COLUMNA PARA BORRAR -->
                     <td><a href="index.php?action=libros&idBorrarL='.$item["id"].'"><button>ELIMINAR</button></a></td>   
                 </tr>';
@@ -98,7 +104,7 @@
 
          public function editarLibroController(){
             //Solicitar el id del libro a editar
-            $datosController = $_GET["id"];
+            $datosController = $_GET["idEditarL"];
             //Enviamos al modelo el id para hacer la consulta y obtener sus datos
             $respuesta = Datos::editarLibroModel($datosController, "libros");
             //Recibimos respuesta del modelo e IMPRIMIMOS UNA FORM PARA EDITAR
@@ -107,29 +113,29 @@
                 <input type="text" value ="'.$respuesta["isbn"].'"
                 name="isbnEditar" required>
                 <input type="text" value ="'.$respuesta["nombre"].'"
-                name="libroEditar" required>
+                name="nombreEditar" required>
                 <input type="text" value ="'.$respuesta["autor"].'"
-                name="libroEditar" required>
+                name="autorEditar" required>
                 <input type="text" value ="'.$respuesta["editorial"].'"
                 name="editorialEditar" required>
                 <input type="text" value ="'.$respuesta["edicion"].'"
                 name="edicionEditar" required>
-                <input type="number" value ="'.$respuesta["año"].'"
-                name="añoEditar" required>
+                <input type="number" value ="'.$respuesta["year"].'"
+                name="yearEditar" required>
                 <input type="submit" value= "Actualizar">';
         }
 
         public function actualizarLibroController(){
-            if(isset($_POST["id"])){
+            if(isset($_POST["idEditar"])){
                 //Preparamos un array con los id de el form del controlador 
                 //anterior para ejecutar la actualizacion en un modelo.
                 $datosController=array("id"=>$_POST["idEditar"],
                                     "isbn"=>$_POST["isbnEditar"],
-                                    "nombrelibro"=>$_POST["nombreEditar"],
+                                    "nombre"=>$_POST["nombreEditar"],
                                     "autor"=>$_POST["autorEditar"],
                                     "editorial"=>$_POST["editorialEditar"],
                                     "edicion"=>$_POST["edicionEditar"],
-                                    "año"=>$_POST["añoEditar"]
+                                    "year"=>$_POST["yearEditar"]
                                         );
                 //Enviar el array a el modelo que generara el UPDATE
                 $respuesta = Datos::actualizarLibrosModel($datosController,"libros");

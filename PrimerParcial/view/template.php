@@ -2,7 +2,11 @@
 <head>
     <title>Primer Parcial</title>
     <style>
-    header{
+
+
+
+        
+            header{
 			position:relative;
 			margin:auto;
 			text-align:center;
