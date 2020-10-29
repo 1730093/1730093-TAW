@@ -10,7 +10,7 @@ class RecetaController extends Controller
     public function __invoke(){
         //Creamos un array para mandar a la vista
         //Consulta no. 1, Envio del array recetas a la vista
-        $receta=['Receta de fresa','Receta de uva','Receta de limon'];
+        $recetas=['Receta de fresa','Receta de uva','Receta de limon'];
         //Pasar a la vista el array (sintaxis 1):
         //Consulta no. 1, Envio del array recetas a la vista
         $categorias =['Comida mexicana','Comida argentina','Postres'];

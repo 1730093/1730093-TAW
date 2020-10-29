@@ -19,4 +19,17 @@ Route::get('/', function () {
 
 
 //Ruta para consumir un controlador llamado recetas
-Route::get('/recetas','App\HTTP\Controllers\RecetaController');
+//route::get('/recetas','App\Http\Controllers\RecetaController');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Ruta controlador de recetas retornando el método index
+route::get('/recetas','App\Http\Controllers\RecetaController2@index')->name('recetas.index');
+
+
+//Ruta controlador de recetas retornando el método create
+route::get('/recetas/create','App\Http\Controllers\RecetaController2@create')->name('recetas.create');
+
+//Ruta controlador de recetas retornando el método store
+route::post('/recetas','App\Http\Controllers\RecetaController2@store')->name('recetas.store');
