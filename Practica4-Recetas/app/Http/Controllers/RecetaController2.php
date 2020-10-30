@@ -37,7 +37,10 @@ class RecetaController2 extends Controller
      */
     public function store(Request $request)
     {
-        $data=request();
+        $data=request()->validate([
+            //Reglas de validacion:
+            'titulo'=>'required|min:6' 
+        ]);
 
         //Facade de Laravel para insertar un registro a la BD
         DB::table('recetas')->insert([
@@ -45,7 +48,13 @@ class RecetaController2 extends Controller
         ]);
 
         //Almacena la receta a la BD
-        dd($request->all());
+        //dd($request->all());
+        //return redirect('recetas/create')->with($success, 'Success!');
+        //return redirect('recetas/create');
+        return redirect('recetas/create')->with('alertas', 'La receta ha sido agregada!');
+
+
+
     }
 
     /**
