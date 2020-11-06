@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class RecetaController2 extends Controller
 {
+
+    //Validar la restriccion a todos los métodos de usuario autenticado
+    public function __construct()
+    {
+        $this->middleware('auth');
+        
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,8 +32,11 @@ class RecetaController2 extends Controller
      */
     public function create()
     {
-        //
-        return view('recetas.create');
+        //Creamos una consulta a la bd sobre las categorias de las recetas
+        $categorias=DB::table('categoria_receta')->get()->pluck('nombre','id');
+        //Esta consulta retorna un array con los elementos de la tabla categoria
+        //Manda a la vista del formulario
+        return view('recetas.create')->with('categorias',$categorias);
     }
 
     /**
@@ -39,7 +49,11 @@ class RecetaController2 extends Controller
     {
         $data=request()->validate([
             //Reglas de validacion:
-            'titulo'=>'required|min:6' 
+            'titulo'=>'required|min:6',
+            'categoria'=>'required',
+            'preparacion' => 'required',
+            'ingredientes' => 'required',
+            'imagen'=> 'required|image|size:2000',
         ]);
 
         //Facade de Laravel para insertar un registro a la BD
