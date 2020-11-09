@@ -14,8 +14,10 @@
 <!-- Diseñar el formulario para guardar receta -->
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
-    <form method="POST" action="{{ route('recetas.store')}}" novalidate><!--Validacion -->
+        <form method="POST" action="{{route('recetas.store')}}"
+        enctype="multipart/form-data" novalidate> <!--Validacion -->
     @csrf
+
     <!--Campo de receta-->
     
     <div class="form-group">
@@ -25,11 +27,10 @@
             class="form-control @error('titulo') is-invalid @enderror"
             placeholder="Titulo de la Receta"
             value={{old('titulo')}}
-            
             >
             <!--Directiva de Laravel para poner un mensaje de error-->
             @error('titulo')
-                <spam class="invalid-feedback d-block" role="alert">
+                <span class="invalid-feedback d-block" role="alert">
                 <!--Ponemos un mensaje generado por Laravel-->
                 <strong>{{$message}}</strong>
             @enderror
@@ -42,7 +43,7 @@
     <div class="form-group">
         <label for='categoria'></label>
         <select name="categoria"
-            class="form-control @error('categoria') is-invalida @enderror" 
+            class="form-control @error('categoria') is-invalid @enderror" 
             id="categoria">
 
             <option value="">--Seleccione-</option>
@@ -55,7 +56,7 @@
             </select>
             <!--Validacion y mandamos retroalimentacion al usuario-->
         @error('categoria')
-        <spam class="invalid-feedback d-block" role="alert">
+        <span class="invalid-feedback d-block" role="alert">
             <!--Ponemos un mensaje de laravel-->
             <strong>{{$message}}</strong>
         @enderror
@@ -63,57 +64,64 @@
     </div>
     <!--Final del select-->
 
-    <!--Inicio campo s de texto de "Preparacion con Trix"-->
+    <!--Inicio campo de texto de Preparacion con Trix"-->
     <div class="form-group mt-3">
-        <label for="preparacion">Preparación</label>
-        <!--Campo de texto de prearacion, se agrega el elemento (old) para que no s eelimine al actualizar la pagina-->
-        <input id="preparacion" type="hidden" name="preparacion" value="{{old('preparacion')}}">
-        <!--Agregamos e editor-->
-        <trix-editor 
-        class="form-control @error('preparacion') is-invalid @enderror"
-        input type="preparacion"></trix-editor>
-        <!--Validacion de mensaje de error-->
+        <label for="preparacion"> Preparación</label>
+        <!--Campo de texto preparación con validación para que no se
+       elimine al actualizar la página (old)-->
+       <input id="preparacion" type="hidden" name="preparacion"
+value="{{ old('preparacion')}}">
+        <!--Agregamos el editor-->
+        <trix-editor
+        class="form-control @error('preparacion') is-invalid @enderror">
+        <input type="preparacion"></trix-editor>
+        <!--Validación con mensaje de error-->
         @error('preparacion')
-            <spam class="invalid-feedback d-block" role="alert">
-            <!--Poner el mensaje generado por laravel-->
-            <strong>{{$message}}</strong>
+        <span class="invalid-feedback d-block" role="alert">
+        <!--ponemos un mensaje generado por laravel-->
+        <strong> {{$message}}</strong>
         @enderror
-    </div>
+        </div>
     <!--Fin de campo de texto preparacion-->
 
-    <!--Inicio campo s de texto de "Ingredientes con Trix"-->
+    <!--Inicio campo de texto de Ingredientes con Trix"-->
     <div class="form-group mt-3">
-        <label for="ingredientes">Ingredientes</label>
-        <!--Campo de texto de prearacion, se agrega el elemento (old) para que no s eelimine al actualizar la pagina-->
-        <input id="ingredientes" type="hidden" name="ingredientes" value="{{old('ingredientes')}}">
-        <!--Agregamos e editor-->
+        <label for="ingredientes"> Ingredientes</label>
+        <!--Campo de texto preparación con validación para que no se
+       elimine al actualizar la página (old)-->
+       <input id="ingredientes" type="hidden" name="ingredientes"
+       value="{{ old('ingredientes')}}">
+        <!--Agregamos el editor-->
         <trix-editor
-        class="form-control @error('ingredientes') is-invalid @enderror"
-        input type="ingredientes"></trix-editor>
+        class="form-control @error('ingredientes') is-invalid
+       @enderror">
+        <input type="ingredientes">
+        </trix-editor>
+        <!--Validación con mensaje de error-->
         @error('ingredientes')
-            <spam class="invalid-feedback d-block" role="alert">
-            <!--Poner el mensaje generado por laravel-->
-            <strong>{{$message}}</strong>
+        <span class="invalid-feedback d-block" role="alert">
+        <!--ponemos un mensaje generado por laravel-->
+        <strong> {{$message}}</strong>
         @enderror
-    </div>
+        </div>
     <!--Fin de campo de texto ingredientes-->
     
     <!--Campo para carga de imagenes-->
     <div class="form-group mt-3">
-        <label for="imagen">Elige una imagen</label>
-        <input 
-            id="imagen"
-            type="file"
-            class="form-control @error('imagen') is-invalid @enderror"
-            name="imagen"
-            >
-            <!--Validar mensaje de error-->
-            @error('imagen')
-                <spam class="invalid-feedback d-block" role="alert">
-                <!--Poner el mensaje generado por laravel-->
-                <strong>{{$message}}</strong>
-            @enderror
-    </div>
+        <label for="imagen"> Elige una imagen</label>
+        <input
+        id="imagen"
+        type="file"
+        class="form-control @error('imagen') is-invalid @enderror"
+        name="imagen"
+        >
+        <!--Validación con mensaje de error-->
+        @error('imagen')
+        <span class="invalid-feedback d-block" role="alert">
+        <!--ponemos un mensaje generado por laravel-->
+        <strong> {{$message}}</strong>
+        @enderror
+        </div>
     <!--Fin de campo de imagen-->
     <!--Boton-->
     <div class="form-group">

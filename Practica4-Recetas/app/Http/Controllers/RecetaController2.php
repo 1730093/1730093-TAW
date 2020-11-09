@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Receta2;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class RecetaController2 extends Controller
 {
@@ -49,18 +51,27 @@ class RecetaController2 extends Controller
     {
         $data=request()->validate([
             //Reglas de validacion:
-            'titulo'=>'required|min:6',
-            'categoria'=>'required',
+            'titulo' => 'required|min:6',
+            'categoria' => 'required',
             'preparacion' => 'required',
             'ingredientes' => 'required',
-            'imagen'=> 'required|image|size:2000',
+            'imagen' => 'required|image'
         ]);
+        $ruta_imagen= $request['imagen']-> store('upload-recetas', 'public');
 
         //Facade de Laravel para insertar un registro a la BD
-        DB::table('recetas')->insert([
-            'titulo'=>$data["titulo"]
+        DB::table('receta2s')->insert([
+            'titulo'=>$data['titulo'],
+            'preparacion'=>$data['preparacion'],
+            'ingredientes'=>$data['ingredientes'],
+            'imagen'=>'imagen.jpg', //Nombre temporal
+            //Determinamos el usuario autenticado (importamos la clase Auth)
+            'user_id'=>Auth::user()->id,
+            'categoria_id'=>$data['categoria']
+
         ]);
 
+        //return redirect()->action('RecetaController2@index');
         //Almacena la receta a la BD
         //dd($request->all());
         //return redirect('recetas/create')->with($success, 'Success!');
