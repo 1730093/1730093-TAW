@@ -69,19 +69,19 @@
         <label for="preparacion"> Preparación</label>
         <!--Campo de texto preparación con validación para que no se
        elimine al actualizar la página (old)-->
-       <input id="preparacion" type="hidden" name="preparacion"
-value="{{ old('preparacion')}}">
+       <input id="preparacion" type="hidden" name="preparacion" value="{{ old ('preparacion') }}">
         <!--Agregamos el editor-->
         <trix-editor
-        class="form-control @error('preparacion') is-invalid @enderror">
-        <input type="preparacion"></trix-editor>
-        <!--Validación con mensaje de error-->
+            class="form-control @error('preparacion') is-invalid @enderror"
+            input="preparacion"
+        ></trix-editor>
+        <!--Validación con mensaje deS error-->
         @error('preparacion')
         <span class="invalid-feedback d-block" role="alert">
         <!--ponemos un mensaje generado por laravel-->
         <strong> {{$message}}</strong>
         @enderror
-        </div>
+    </div>
     <!--Fin de campo de texto preparacion-->
 
     <!--Inicio campo de texto de Ingredientes con Trix"-->
@@ -89,21 +89,19 @@ value="{{ old('preparacion')}}">
         <label for="ingredientes"> Ingredientes</label>
         <!--Campo de texto preparación con validación para que no se
        elimine al actualizar la página (old)-->
-       <input id="ingredientes" type="hidden" name="ingredientes"
-       value="{{ old('ingredientes')}}">
+       <input id="ingredientes" type="hidden" name="ingredientes" value="{{ old ('ingredientes') }}">
         <!--Agregamos el editor-->
         <trix-editor
-        class="form-control @error('ingredientes') is-invalid
-       @enderror">
-        <input type="ingredientes">
-        </trix-editor>
-        <!--Validación con mensaje de error-->
+            class="form-control @error('ingredientes') is-invalid @enderror"
+            input="ingredientes"
+        ></trix-editor>
+        <!--Validación con mensaje deS error-->
         @error('ingredientes')
         <span class="invalid-feedback d-block" role="alert">
         <!--ponemos un mensaje generado por laravel-->
         <strong> {{$message}}</strong>
         @enderror
-        </div>
+    </div>
     <!--Fin de campo de texto ingredientes-->
     
     <!--Campo para carga de imagenes-->
