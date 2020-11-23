@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-
+/*
 //Ruta para invocar al controlador con el array de las recetas
-route::get('/ruta','App\HTTP\Controllers\RecetaController');
+route::get('/ruta','App\HTTP\Controllers\RecetaController');*/

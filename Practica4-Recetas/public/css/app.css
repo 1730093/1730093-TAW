@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
 trix-editor {
+  height: auto !important;
   min-height: 400px;
 }
 

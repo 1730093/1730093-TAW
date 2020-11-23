@@ -14,19 +14,23 @@
             <thead class="bg-primary text-light">
                 <tr>
                     <th scole="col" >Titulo</th>
-                    <th scole="col" >Categorias</th>
+                    <th scole="col" >Categoria</th>
                     <th scole="col" >Acciones</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($recetas as $receta)
                 <tr>
-                    <td>Pizza</td>
-                    <td>Pizzas</td>
+                    <td>{{ $receta->titulo}}</td>
+                    <td> {{$receta->categoria->nombre}} </td>
                     <td>
-                    
-                    
+                        <a href="{{ route('recetas.show', ['receta' => $receta->id]) }}" class="btn btn-success d-block mb-2">Ver</a>
+                        <a href="{{ route('recetas.edit', ['receta' => $receta->id]) }}" class="btn btn-dark d-block mb-2">Editar</a>
+                        <a href="" class="btn btn-danger d-block mb-2">Eliminar</a>
+
                     </td>
                 </tr>
+                @endforeach
             </tbody>
 
         </table>

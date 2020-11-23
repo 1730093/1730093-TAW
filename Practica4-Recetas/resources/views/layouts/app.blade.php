@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Recetas') }}</title>
 
     <!--Definir el yield de estilos para la instegracion del editor Trix-->
     @yield('styles')
@@ -28,7 +28,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Recetas') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -75,6 +75,27 @@
                 </div>
             </div>
         </nav>
+
+        <!--Agregar las categorias -->
+        <nav class="navbar navbar-expand-md navbar-light categorias-bg">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorias" aria-controls="categorias" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                    Categorias
+                </button>
+                <div class="collapse navbar-collapse " id="categorias">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav w-100 d-flex justify-content-between">
+                        <li class="nav-item">
+                            <ul><a class="nav-link" href="{{ route('recetas.index')  }}">Administrar mis recetas</a></ul>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!---Termina para agregar las categorias-->
+
         <div class="container">
             <div class="row">
                 <div class="py-4 mt-5 col-12">
