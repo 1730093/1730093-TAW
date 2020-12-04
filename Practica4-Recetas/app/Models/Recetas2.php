@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Recetas2 extends Model
-{
+{ 
     // Campos que se agregaran
     protected $fillable = [
         'titulo', 'preparacion', 'ingredientes', 'imagen', 'categoria_id'

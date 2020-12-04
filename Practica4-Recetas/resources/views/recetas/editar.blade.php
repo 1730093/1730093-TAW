@@ -14,10 +14,9 @@
 <!-- Diseñar el formulario para guardar receta -->
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
-        <form method="POST" action="{{route('recetas.update', ['receta => $receta->id'])}}"
+        <form method="POST" action="{{ route('recetas.update', ['receta' => $receta->id]) }}"
         enctype="multipart/form-data" novalidate> <!--Validacion -->
     @csrf
-
     @method('PUT')
     <!--Campo de receta-->
     
@@ -130,7 +129,7 @@
     <!--Fin de campo de imagen-->
     <!--Boton-->
     <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Agregar receta">
+        <input type="submit" class="btn btn-primary" value="Actualizar receta">
     </div>
     </form>
     </div>

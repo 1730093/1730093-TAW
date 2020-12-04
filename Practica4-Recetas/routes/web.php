@@ -42,4 +42,11 @@ route::get('/recetas/{receta}', 'App\Http\Controllers\RecetaController2@show')->
 //Ruta controlador de recetas retornando el método edit
 route::get('/recetas/{receta}/edit', 'App\Http\Controllers\RecetaController2@edit')->name('recetas.edit');
 
+//Ruta controlador de recetas retornando el método update
 route::put('/recetas/{receta}', 'App\Http\Controllers\RecetaController2@update')->name('recetas.update');
+
+//Ruta controlador de recetas retornando el método destroy
+route::delete('/recetas/{receta}', 'App\Http\Controllers\RecetaController2@destroy')->name('recetas.destroy');
+
+//Ruta para enlazar la categoria con las recetas
+route::get('/categoria/{categoriaReceta}', 'App\Http\Controllers\CategoriasController@show')->name('categorias.show');

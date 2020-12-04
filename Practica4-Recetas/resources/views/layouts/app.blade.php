@@ -86,10 +86,16 @@
                 <div class="collapse navbar-collapse " id="categorias">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav w-100 d-flex justify-content-between">
+                        @foreach ($categorias as $categoria)
                         <li class="nav-item">
-                            <ul><a class="nav-link" href="{{ route('recetas.index')  }}">Administrar mis recetas</a></ul>
+                        <a class="nav-link"  href="{{ route('categorias.show', ['categoriaReceta' => $categoria->id ]) }}">
+                              <h3> {{ $categoria->nombre }} </h3>
+                            </a>
                         </li>
-                        
+                        @endforeach
+                        <li class="nav-item">
+                            <ul><a class="nav-link" href="{{ route('recetas.index')  }}"><h3>Administrar mis recetas</h3></a></ul>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -150,10 +150,13 @@ class RecetaController2 extends Controller
      * @param  \App\Recetas2 $receta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $receta)
+    public function update(Request $request, Recetas2 $receta)
     {
-        return $receta;
-         // validación
+        //Verificar que el usuario que creo la receta es el que la puede editar
+        //$this->authorize('update', $receta);
+
+        //return $receta;
+        // validación de los valores
          $data = $request->validate([
             'titulo' => 'required|min:6',
             'preparacion' => 'required',
@@ -161,21 +164,34 @@ class RecetaController2 extends Controller
             'categoria' => 'required',
         ]);
 
-        //Pasar los valores
+        //Se le asignan los valores de data a receta
         $receta->titulo = $data['titulo'];
-
-
+        $receta->preparacion = $data['preparacion'];
+        $receta->ingredientes = $data['ingredientes'];
+        $receta->categoria_id = $data['categoria'];
+        
+        //SE DETECTA CUANDO EL USUARIO ACTUALIZO LA IMAGEN DE LA RECETA
+        if(request('imagen')){
+            $ruta_imagen = $request['imagen']->store('upload-recetas', 'public');
+            $receta->imagen = $ruta_imagen;
+        }
+        //PARA ACTUALIZAR LA RECETA
+        $receta->save();
+        //PARA REDIRECCIONAR A INDEX
+        return redirect(route ('recetas.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Recetas2 $receta
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Recetas2 $receta)
     {
-        return "Desde destroy";
-
+        //Metodo para eliminar la receta
+        $receta->delete();
+        //Para redireccionar al index
+        return redirect(route ('recetas.index'));
     }
 }
